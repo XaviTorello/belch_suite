@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"time"
 
 	// "github.com/XaviTorello/belch"
 	// "path/filepath"
@@ -25,9 +26,8 @@ var proxy_config = proxy.Defaults
 var Requests_list = map[int]Request{}
 
 func main() {
-
 	proxy_config.Verbose = true
-	proxy.Start(proxy_config)
+	go proxy.Start(proxy_config)
 
 	// Requests_list := []Request{}
 	Requests_list[0] = Request{"8.8.8.8", 80, "/", "payload"}
@@ -36,4 +36,6 @@ func main() {
 	for _, request := range Requests_list {
 		fmt.Println(request.IP)
 	}
+
+	time.Sleep(1 * time.Minute)
 }
