@@ -1,4 +1,4 @@
-package main
+package proxy
 
 import (
 	"flag"
@@ -14,5 +14,6 @@ func main() {
 
 	var proxy_config = Proxy_config{*addr, *verbose}
 
-	Start(proxy_config)
+	Start_simple(proxy_config)
+	// Start_interceptor(proxy_config)
 }
